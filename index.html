@@ -61,19 +61,19 @@ img{max-width:100%;display:block}
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:18px 14px 16px;
-  gap:10px;
+  padding:14px 12px 12px;
+  gap:8px;
 }
-.topbar .brand{display:flex;align-items:center;gap:10px;min-width:0;flex-shrink:1}
-.topbar .brand svg{height:57px;width:auto;display:block}
-.topbar .brand .brand-full{display:block;height:42px}
+.topbar .brand{display:flex;align-items:center;gap:8px;min-width:0;flex-shrink:1}
+.topbar .brand svg{height:32px;width:auto;display:block;max-width:100%}
+.topbar .brand .brand-full{display:block;height:32px}
 .topbar .brand .brand-mark{display:none}
 .hd-nav{
   display:flex;
   flex-direction:row;
   align-items:center;
-  gap:14px;
-  font-size:15px;
+  gap:10px;
+  font-size:13px;
   font-weight:600;
   letter-spacing:.005em;
   flex-shrink:0;
@@ -81,13 +81,13 @@ img{max-width:100%;display:block}
 .hd-nav a{
   display:inline-flex;
   align-items:center;
-  gap:8px;
+  gap:5px;
   color:#fff;
   opacity:.98;
   white-space:nowrap;
 }
 .hd-nav svg{
-  width:18px;height:18px;
+  width:14px;height:14px;
   fill:none;stroke:currentColor;
   stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
   flex:0 0 auto;
@@ -322,6 +322,7 @@ h2.section-title{
   margin:0;
 }
 
+.eir-divider{display:none}
 .eir-block{margin-top:28px}
 .eir-block h3{
   font-family:Anton,Inter,sans-serif;
@@ -463,10 +464,12 @@ h2.section-title{
   .hero-tag{font-size:64px}
   h2.section-title{font-size:30px}
   .section{padding:40px 18px 32px}
-  .topbar{padding:14px 12px 12px}
-  .topbar .brand .brand-full{height:36px}
-  .hd-nav{font-size:13px;gap:10px}
-  .hd-nav svg{width:14px;height:14px}
+  .topbar{padding:12px 10px 10px;gap:6px}
+  .topbar .brand .brand-full{height:28px}
+  .topbar .brand{gap:6px}
+  .hd-nav{font-size:12px;gap:8px}
+  .hd-nav a{gap:4px}
+  .hd-nav svg{width:13px;height:13px}
 }
 
 /* ================= DESKTOP ≥768 ================= */
@@ -547,6 +550,15 @@ h2.section-title{
   .eir-roles .eir-role{
     border-bottom:none;
     padding:6px 0 6px;
+  }
+  /* Full-width divider between roles block and lower two-column blocks */
+  .eir-divider{
+    display:block;
+    border:0;
+    height:1px;
+    background:var(--line-strong);
+    margin:36px 0 40px;
+    width:100%;
   }
 
   /* Hide the mobile-only invest list on desktop */
@@ -813,6 +825,8 @@ h2.section-title{
     </div>
   </div>
 
+  <hr class="eir-divider" aria-hidden="true">
+
   <div class="eir-blocks-row">
     <div class="eir-block left">
       <h3>What sets a strong EIR apart</h3>
@@ -914,10 +928,10 @@ h2.section-title{
 <!-- ===================== FOOTER (no top line) ===================== -->
 <footer class="site-footer">
   <div class="footer-row">
-    <div class="site-copy">© Forza Capital</div>
     <a href="mailto:ask@forza.capital" aria-label="Email Forza Capital">
       <img class="footer-email" alt="ask@forza.capital" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='340' height='28' viewBox='0 0 340 28'><text x='0' y='20' font-family='Arial, sans-serif' font-size='22' fill='%23171512'>ask@forza.capital</text></svg>">
     </a>
+    <div class="site-copy">© Forza Capital</div>
   </div>
 </footer>
 
