@@ -37,14 +37,16 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 
 /* ================= HERO ================= */
+/* Mobile-first: add a generous bottom buffer so iOS/Android browser chrome
+   (URL bar, bottom toolbar) cannot reveal the next section in the first
+   on-screen view. Real-device viewports are shorter than the meta viewport
+   reports; svh accounts for some of that, and the +130px buffer covers the rest. */
 .hero{
   position:relative;
-  min-height:100vh;
-  min-height:100svh;
-  min-height:100dvh;
-  height:100vh;
-  height:100svh;
-  height:100dvh;
+  min-height:calc(100vh + 130px);
+  min-height:calc(100svh + 130px);
+  min-height:calc(100dvh + 130px);
+  height:auto;
   background:url('zoshua-colah-arqiblHyiUc-unsplash.jpg') 50% 35%/cover no-repeat;
   color:#fff;
   padding:0;
@@ -56,38 +58,51 @@ img{max-width:100%;display:block}
   text-shadow:0 2px 14px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.55);
 }
 
-/* Header — single row, brand left, nav right (full labels, no pills, no burger) */
+/* Header — MOBILE: stable two-row layout to prevent EIRs clipping when brand is large.
+   Row 1: brand (logo + "Forza Capital"), full width.
+   Row 2: nav links (Startups, EIRs), right-aligned.
+   Desktop overrides this to a single row in the ≥768px media query. */
 .topbar{
   display:flex;
+  flex-wrap:wrap;
   align-items:center;
   justify-content:space-between;
-  padding:14px 12px 12px;
-  gap:8px;
+  padding:14px 16px 10px;
+  gap:6px 8px;
+  row-gap:8px;
 }
-.topbar .brand{display:flex;align-items:center;gap:8px;min-width:0;flex-shrink:1}
-.topbar .brand svg{height:32px;width:auto;display:block;max-width:100%}
-.topbar .brand .brand-full{display:block;height:32px}
+.topbar .brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+  flex:1 1 100%;
+}
+.topbar .brand svg{height:48px;width:auto;display:block;max-width:100%}
+.topbar .brand .brand-full{display:block;height:48px}
 .topbar .brand .brand-mark{display:none}
 .hd-nav{
   display:flex;
   flex-direction:row;
   align-items:center;
-  gap:10px;
-  font-size:13px;
+  justify-content:flex-end;
+  gap:18px;
+  font-size:14px;
   font-weight:600;
   letter-spacing:.005em;
-  flex-shrink:0;
+  flex:1 1 100%;
+  margin-top:2px;
 }
 .hd-nav a{
   display:inline-flex;
   align-items:center;
-  gap:5px;
+  gap:6px;
   color:#fff;
   opacity:.98;
   white-space:nowrap;
 }
 .hd-nav svg{
-  width:14px;height:14px;
+  width:15px;height:15px;
   fill:none;stroke:currentColor;
   stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
   flex:0 0 auto;
@@ -100,7 +115,10 @@ img{max-width:100%;display:block}
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
-  padding:24px 22px 72px;
+  /* Bottom padding includes the +130px hero buffer so the slogan sits at the
+     same visual position above the (real-phone) toolbar as it would in a single-
+     viewport hero. Keeps the slogan visible above iOS/Android browser chrome. */
+  padding:24px 22px 202px;
   min-height:0;
   overflow:hidden;
 }
@@ -459,27 +477,32 @@ h2.section-title{
 /* ================= Desktop investments (hidden on mobile) ================= */
 .di-section{display:none}
 
-/* small overflow guard at narrow widths */
+/* small overflow guard at narrow widths — keep two-row layout, just trim sizes */
 @media (max-width:374px){
   .hero-tag{font-size:64px}
   h2.section-title{font-size:30px}
   .section{padding:40px 18px 32px}
-  .topbar{padding:12px 10px 10px;gap:6px}
-  .topbar .brand .brand-full{height:28px}
+  .topbar{padding:12px 14px 8px;gap:6px;row-gap:6px}
+  .topbar .brand svg{height:44px}
+  .topbar .brand .brand-full{height:44px}
   .topbar .brand{gap:6px}
-  .hd-nav{font-size:12px;gap:8px}
-  .hd-nav a{gap:4px}
-  .hd-nav svg{width:13px;height:13px}
+  .hd-nav{font-size:13px;gap:14px}
+  .hd-nav a{gap:5px}
+  .hd-nav svg{width:14px;height:14px}
 }
 
 /* ================= DESKTOP ≥768 ================= */
 @media (min-width:768px){
   body{font-size:17px}
+  /* Desktop reverts to exact-viewport hero (no mobile +130px buffer) */
   .hero{min-height:100vh;height:100vh;background-position:50% 35%}
-  .topbar{padding:22px 36px 18px}
+  /* Desktop reverts to single-row header */
+  .topbar{padding:22px 36px 18px;flex-wrap:nowrap;row-gap:0}
+  .topbar .brand{flex:0 1 auto;min-width:0}
+  .topbar .brand svg{height:63px}
   .topbar .brand .brand-full{display:block;height:63px}
   .topbar .brand .brand-mark{display:none}
-  .hd-nav{flex-direction:row;gap:26px;font-size:15px;font-weight:500}
+  .hd-nav{flex:0 0 auto;justify-content:flex-end;flex-direction:row;gap:26px;font-size:15px;font-weight:500;margin-top:0}
   .hd-nav svg{width:16px;height:16px}
   .hd-nav .nav-long{display:inline}
   .hd-nav .nav-short{display:none}
