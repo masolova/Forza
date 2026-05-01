@@ -55,10 +55,1877 @@
     box-sizing: border-box !important;
   }
 }
-</style></head><body><section class="hero"><div class="brand"><svg aria-label="Forza Capital" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none">
+</style><style id="forza-additions-v002">
+/* ===== Top nav on hero (desktop) ===== */
+.topnav{
+  position:absolute;
+  top:36px;
+  right:10vw;
+  display:flex;
+  align-items:center;
+  gap:28px;
+  z-index:5;
+}
+.topnav a{
+  font-family:Inter,sans-serif;
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:.01em;
+  color:rgba(255,255,255,.92);
+  text-decoration:none;
+  padding:6px 2px;
+  border-bottom:1px solid transparent;
+  transition:border-color .18s ease, color .18s ease;
+  white-space:nowrap;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.topnav a:hover{
+  color:#fff;
+  border-bottom-color:rgba(255,255,255,.7);
+}
+/* White-outline icons in the top nav. To remove, delete the <svg> next to each <a> or hide via .topnav .ico{display:none}. */
+.topnav .ico{
+  width:16px;
+  height:16px;
+  flex:0 0 auto;
+  stroke:rgba(255,255,255,.85);
+  fill:none;
+  stroke-width:1.6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  opacity:.9;
+}
+.topnav a:hover .ico{ stroke:#fff; opacity:1; }
+
+/* ===== Shared panel styles for the two new blocks ===== */
+.panel{
+  background:var(--surface);
+  padding:64px 10vw 56px;
+  border-top:1px solid var(--line);
+}
+.panel + .panel{ border-top:1px solid var(--line); }
+.panel-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  margin-bottom:28px;
+}
+.panel-head > div{ min-width:0; flex:1 1 auto; }
+
+/* Newspaper headline: single line on desktop. We allow the headline width
+   to fill the row (no max-width:14ch which forced two lines), and clamp the
+   font-size to whatever fits the available row. */
+.panel h2{
+  font-family:Anton,sans-serif;
+  font-weight:400;
+  text-transform:uppercase;
+  font-size:clamp(34px, 4.4vw, 60px);
+  line-height:1.02;
+  letter-spacing:-.01em;
+  margin:0;
+  color:var(--text);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:clip;
+}
+.panel .eyebrow{
+  font-family:Inter,sans-serif;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.panel .intro{
+  font-size:19px;
+  line-height:1.45;
+  color:var(--text);
+  max-width:78ch;
+  margin:0 0 28px;
+}
+.panel h3{
+  font-family:Inter,sans-serif;
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  color:var(--text);
+  margin:0 0 12px;
+}
+.panel .cols{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:36px 56px;
+}
+.panel .col h3{ margin-top:0; }
+.panel ol, .panel ul{
+  margin:0 0 14px;
+  padding-left:1.1em;
+}
+.panel ol li, .panel ul li{
+  font-size:15.5px;
+  line-height:1.5;
+  color:var(--text);
+  margin:6px 0;
+}
+.panel ol li::marker{ color:var(--muted); font-variant-numeric:tabular-nums; }
+.panel ul li::marker{ color:var(--muted); }
+.panel .sub-bullets{
+  margin:4px 0 8px 1.1em;
+  padding-left:1em;
+  list-style:none;
+  border-left:1px solid var(--line);
+}
+.panel .sub-bullets li{
+  font-size:14.5px;
+  line-height:1.45;
+  color:var(--muted);
+  padding-left:8px;
+  margin:4px 0;
+}
+.panel .footnote{
+  margin-top:8px;
+  font-size:14px;
+  color:var(--muted);
+}
+.panel .contact{
+  margin-top:24px;
+  font-size:16px;
+  color:var(--text);
+}
+.panel .contact strong{ font-weight:600; }
+
+/* ===== Block 1: EIR — desktop two-column layout ===== */
+#eir .panel-grid{
+  display:grid;
+  grid-template-columns:1.05fr 1fr;
+  gap:28px 56px;
+  align-items:start;
+}
+#eir .panel-grid > .full{ grid-column:1 / -1; }
+
+/* ===== Block 2: Request for Startups — projects list ===== */
+#rfs .updated{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:6px;
+  font-size:14px;
+  color:var(--muted);
+}
+#rfs .updated .dot{
+  display:inline-block;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--muted);
+}
+#rfs .three-cols{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px 56px;
+  margin-bottom:18px;
+}
+
+/* variant scaffolding */
+.variant{
+  margin:36px 0 8px;
+  border-top:1px dashed var(--line);
+  padding-top:22px;
+}
+.variant > .variant-tag{
+  display:inline-block;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:4px 10px;
+  margin-bottom:14px;
+}
+
+/* ----- Variant A: compact text with inline dot dividers ----- */
+.va .projects-a{ margin-top:6px; }
+.va .p-a{
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:18px;
+  align-items:baseline;
+}
+.va .p-a:first-child{ border-top:1px solid var(--line); }
+.va .p-a .num{
+  font-family:Inter,sans-serif;
+  font-variant-numeric:tabular-nums;
+  font-size:13px;
+  color:#8c8478;
+  letter-spacing:.08em;
+}
+.va .p-a .name{
+  font-size:18px;
+  font-weight:600;
+  margin-right:10px;
+  color:var(--text);
+}
+.va .p-a .desc{
+  font-size:14.5px;
+  line-height:1.55;
+  color:var(--muted);
+}
+.va .p-a .desc .sep{
+  display:inline-block;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#b9b1a3;
+  margin:0 10px 2px;
+  vertical-align:middle;
+}
+
+/* ----- Variant B: each project as a mini-card with nested lines ----- */
+.vb .projects-b{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:6px;
+}
+.vb .p-b{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 20px;
+  background:#fbf7f1;
+}
+.vb .p-b .head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:8px;
+}
+.vb .p-b .num{
+  width:32px;
+  height:32px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  display:grid;
+  place-items:center;
+  font-size:13px;
+  color:#8c8478;
+  font-variant-numeric:tabular-nums;
+}
+.vb .p-b .name{
+  font-size:17px;
+  font-weight:600;
+  color:var(--text);
+}
+.vb .p-b ul.lines{
+  list-style:none;
+  margin:6px 0 0;
+  padding:0;
+}
+.vb .p-b ul.lines li{
+  position:relative;
+  padding-left:14px;
+  font-size:14px;
+  line-height:1.5;
+  color:var(--muted);
+  margin:4px 0;
+}
+.vb .p-b ul.lines li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.6em;
+  width:6px;
+  height:1px;
+  background:#b9b1a3;
+}
+.vb .p-b .scope{
+  margin-top:10px;
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#8c8478;
+}
+
+/* ----- Variant C: newspaper / table style ----- */
+.vc .projects-c{
+  margin-top:6px;
+  border-top:1px solid var(--text);
+}
+.vc .p-c{
+  display:grid;
+  grid-template-columns:64px minmax(220px, 1.1fr) 2fr;
+  column-gap:32px;
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+  align-items:baseline;
+}
+.vc .p-c .num{
+  font-family:Inter,sans-serif;
+  font-variant-numeric:tabular-nums;
+  font-size:13px;
+  color:#8c8478;
+  letter-spacing:.08em;
+}
+.vc .p-c .name{
+  font-family:Inter,sans-serif;
+  font-size:17px;
+  font-weight:600;
+  color:var(--text);
+  line-height:1.25;
+}
+.vc .p-c .name .scope{
+  display:block;
+  margin-top:4px;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#8c8478;
+}
+.vc .p-c .desc{
+  font-size:14.5px;
+  line-height:1.55;
+  color:var(--muted);
+}
+.vc .p-c .desc .row{
+  display:block;
+  margin:2px 0;
+}
+.vc .p-c .desc .row + .row{
+  border-top:1px dotted var(--line);
+  padding-top:6px;
+  margin-top:6px;
+}
+.vc .p-c .desc .label{
+  display:inline-block;
+  min-width:84px;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#8c8478;
+  margin-right:6px;
+}
+
+/* ===== Mobile fallbacks ===== */
+@media (max-width:980px){
+  .topnav{
+    position:static;
+    margin-top:8px;
+    flex-wrap:wrap;
+    gap:14px 18px;
+    padding:10px 22px 0;
+  }
+  .topnav a{ font-size:13px; }
+  .topnav .ico{ width:14px; height:14px; }
+  .panel{ padding:32px 22px 28px; }
+  .panel-head{ flex-direction:column; align-items:flex-start; gap:8px; margin-bottom:18px; }
+  .panel h2{
+    font-size:clamp(30px,9vw,52px);
+    white-space:normal;
+    overflow:visible;
+    line-height:1.02;
+  }
+  .panel .intro{ font-size:16px; }
+  .panel h3{ font-size:15px; }
+  .panel ol li, .panel ul li{ font-size:15px; }
+  #eir .panel-grid, .panel .cols, #rfs .three-cols{ grid-template-columns:1fr; gap:18px; }
+  .va .p-a{ grid-template-columns:36px 1fr; gap:12px; }
+  .vb .projects-b{ grid-template-columns:1fr; }
+  .vc .p-c{ grid-template-columns:44px 1fr; row-gap:6px; }
+  .vc .p-c .desc{ grid-column:1 / -1; }
+}
+/* Hero needs room for the topnav on the right; brand stays at left */
+@media (min-width:981px){
+  .hero .brand{ z-index:5; }
+}
+
+/* icon picker strip (standalone, below hero) */
+.iconpicker{
+  background:var(--surface);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:18px 10vw;
+  color:var(--text);
+  font-family:Inter,sans-serif;
+}
+.iconpicker-title{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.iconpicker-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.iconpicker-card{
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:10px 12px;
+  background:#fbf7f1;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.iconpicker-tag{
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#8c8478;
+}
+.iconpicker-mock{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  color:var(--text);
+}
+.iconpicker-mock .ico{
+  width:16px;height:16px;flex:0 0 auto;
+  stroke:var(--text);fill:none;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.iconpicker-note{
+  font-size:11px;
+  color:var(--muted);
+}
+@media (max-width:980px){
+  .iconpicker{padding:16px 22px;}
+  .iconpicker-row{grid-template-columns:1fr;}
+}
+
+/* Version 1 — full-width strip rows with heavy dot separators */
+.v1 .projects-1{
+  margin-top:6px;
+  border-top:1px solid var(--text);
+}
+.v1 .p-1{
+  display:grid;
+  grid-template-columns:54px 1fr;
+  column-gap:24px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+  align-items:baseline;
+}
+.v1 .p-1 .num{
+  font-family:Inter,sans-serif;
+  font-variant-numeric:tabular-nums;
+  font-size:13px;
+  color:#8c8478;
+  letter-spacing:.08em;
+}
+.v1 .p-1 .body{
+  font-size:15px;
+  line-height:1.55;
+  color:var(--text);
+}
+.v1 .p-1 .name{
+  font-size:18px;
+  font-weight:600;
+  color:var(--text);
+  margin-right:14px;
+}
+.v1 .p-1 .body .frag{
+  color:var(--muted);
+}
+.v1 .p-1 .body .frag.lead{
+  color:var(--text);
+}
+/* heavy / fat dot separator between sub-points */
+.v1 .p-1 .body .bigdot{
+  display:inline-block;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#171512;
+  margin:0 14px 2px;
+  vertical-align:middle;
+}
+
+/* Version 2 — compact cards, no scope chips */
+.v2 .projects-2{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:6px;
+}
+.v2 .p-2{
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:14px 16px;
+  background:#fbf7f1;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.v2 .p-2 .head{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+}
+.v2 .p-2 .num{
+  font-family:Inter,sans-serif;
+  font-variant-numeric:tabular-nums;
+  font-size:12px;
+  color:#8c8478;
+  letter-spacing:.08em;
+}
+.v2 .p-2 .name{
+  font-size:15.5px;
+  font-weight:600;
+  color:var(--text);
+  line-height:1.25;
+}
+.v2 .p-2 ul.lines{
+  list-style:none;
+  margin:4px 0 0;
+  padding:0;
+}
+.v2 .p-2 ul.lines li{
+  position:relative;
+  padding-left:12px;
+  font-size:13.5px;
+  line-height:1.5;
+  color:var(--muted);
+  margin:3px 0;
+}
+.v2 .p-2 ul.lines li::before{
+  content:"\2014";
+  position:absolute;
+  left:0;
+  top:0;
+  color:#b9b1a3;
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* Version 3 — editorial two-column reading layout */
+.v3-rfs .projects-3{
+  margin-top:6px;
+  border-top:1px solid var(--text);
+}
+.v3-rfs .p-3{
+  display:grid;
+  grid-template-columns:90px minmax(220px, 280px) 1fr;
+  column-gap:32px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+  align-items:baseline;
+}
+.v3-rfs .p-3 .num{
+  font-family:Anton,sans-serif;
+  font-size:30px;
+  line-height:1;
+  letter-spacing:.01em;
+  color:var(--text);
+}
+.v3-rfs .p-3 .name{
+  font-family:Inter,sans-serif;
+  font-size:17px;
+  font-weight:600;
+  line-height:1.25;
+  color:var(--text);
+}
+.v3-rfs .p-3 .desc{
+  font-size:14.5px;
+  line-height:1.6;
+  color:var(--muted);
+  border-left:1px solid var(--line);
+  padding-left:20px;
+}
+.v3-rfs .p-3 .desc p{
+  margin:0;
+}
+.v3-rfs .p-3 .desc p + p{
+  margin-top:6px;
+  padding-top:6px;
+  border-top:1px dotted var(--line);
+}
+
+@media (max-width:980px){
+  .v1 .p-1{ grid-template-columns:36px 1fr; column-gap:14px; }
+  .v2 .projects-2{ grid-template-columns:1fr; }
+  .v3-rfs .p-3{ grid-template-columns:48px 1fr; row-gap:6px; }
+  .v3-rfs .p-3 .desc{ grid-column:1 / -1; padding-left:0; border-left:0; }
+}
+</style>
+<style id="forza-v4-rfs">
+/* ===== v4 RFS: shared number badge (rounded-square, light border, gray digits) ===== */
+.v4-badge{
+  display:inline-grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fbf7f1;
+  font-family:Inter,sans-serif;
+  font-variant-numeric:tabular-nums;
+  font-size:13px;
+  font-weight:500;
+  color:#8c8478;
+  letter-spacing:.04em;
+  flex:0 0 auto;
+}
+
+/* ===== Strip A — number badge + title + body in a single row, heavy dot separators ===== */
+.sa .projects-sa{ margin-top:6px; border-top:1px solid var(--line); }
+.sa .p-sa{
+  display:grid;
+  grid-template-columns:46px 1fr;
+  column-gap:18px;
+  align-items:start;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+.sa .p-sa .num{ margin-top:1px; }
+.sa .p-sa .body{
+  display:block;
+  font-size:15.5px;
+  line-height:1.55;
+  color:var(--text);
+}
+.sa .p-sa .body .name{
+  font-weight:600;
+  color:var(--text);
+  margin-right:10px;
+}
+.sa .p-sa .body .frag{ color:var(--muted); }
+.sa .p-sa .body .frag.lead{ color:var(--text); }
+.sa .p-sa .body .bigdot{
+  display:inline-block;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#171512;
+  margin:0 12px 2.5px;
+  vertical-align:middle;
+}
+
+/* ===== Strip B — number badge + title row, then compact detail row with heavy dot separators, stronger row separators ===== */
+.sb .projects-sb{ margin-top:6px; border-top:2px solid var(--text); }
+.sb .p-sb{
+  display:grid;
+  grid-template-columns:46px 1fr;
+  column-gap:18px;
+  padding:20px 0 22px;
+  border-bottom:1px solid #c6bdac;
+}
+.sb .p-sb .num{ margin-top:1px; }
+.sb .p-sb .head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:8px;
+}
+.sb .p-sb .head .name{
+  font-size:18px;
+  font-weight:600;
+  color:var(--text);
+  letter-spacing:-0.005em;
+}
+.sb .p-sb .lead{
+  font-size:15px;
+  line-height:1.55;
+  color:var(--text);
+  margin:0 0 8px;
+}
+.sb .p-sb .detail{
+  font-size:14px;
+  line-height:1.55;
+  color:var(--muted);
+}
+.sb .p-sb .detail .bigdot{
+  display:inline-block;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#171512;
+  margin:0 10px 2px;
+  vertical-align:middle;
+}
+
+/* ===== Cards A — ultra-compact static cards, dense text, no scope chips ===== */
+.ca .projects-ca{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:6px;
+}
+.ca .p-ca{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px 14px;
+  background:#fbf7f1;
+}
+.ca .p-ca .head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:6px;
+}
+.ca .p-ca .num{ width:28px; height:28px; font-size:12px; }
+.ca .p-ca .name{
+  font-size:15px;
+  font-weight:600;
+  color:var(--text);
+  line-height:1.25;
+}
+.ca .p-ca ul.lines{
+  list-style:none;
+  margin:4px 0 0;
+  padding:0;
+}
+.ca .p-ca ul.lines li{
+  position:relative;
+  padding-left:12px;
+  font-size:13px;
+  line-height:1.45;
+  color:var(--muted);
+  margin:2px 0;
+}
+.ca .p-ca ul.lines li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.62em;
+  width:5px;
+  height:1px;
+  background:#b9b1a3;
+}
+
+/* ===== Cards B — compact collapsed cards that expand on hover/focus ===== */
+.cb .projects-cb{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:6px;
+}
+.cb .p-cb{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px 14px;
+  background:#fbf7f1;
+  transition:box-shadow .18s ease, border-color .18s ease, background .18s ease;
+}
+.cb .p-cb .head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:0;
+}
+.cb .p-cb .num{ width:28px; height:28px; font-size:12px; }
+.cb .p-cb .name{
+  font-size:15px;
+  font-weight:600;
+  color:var(--text);
+  line-height:1.25;
+}
+.cb .p-cb .summary{
+  display:block;
+  margin-top:6px;
+  font-size:13px;
+  line-height:1.45;
+  color:var(--muted);
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}
+.cb .p-cb .full{
+  margin-top:8px;
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .25s ease, opacity .2s ease, margin-top .2s ease;
+  opacity:0;
+}
+.cb .p-cb .full ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.cb .p-cb .full ul li{
+  position:relative;
+  padding-left:12px;
+  font-size:13px;
+  line-height:1.45;
+  color:var(--muted);
+  margin:3px 0;
+}
+.cb .p-cb .full ul li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.62em;
+  width:5px;
+  height:1px;
+  background:#b9b1a3;
+}
+.cb .p-cb:hover, .cb .p-cb:focus-within{
+  border-color:#171512;
+  background:#fff;
+}
+.cb .p-cb:hover .summary, .cb .p-cb:focus-within .summary{
+  -webkit-line-clamp:unset;
+  display:block;
+  color:var(--text);
+}
+.cb .p-cb:hover .full, .cb .p-cb:focus-within .full{
+  max-height:600px;
+  opacity:1;
+}
+
+/* label chips for the four sub-variants */
+.v4-tag{
+  display:inline-block;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:4px 10px;
+  margin:30px 0 14px;
+}
+
+@media (max-width:980px){
+  .sa .p-sa, .sb .p-sb{ grid-template-columns:38px 1fr; column-gap:12px; }
+  .ca .projects-ca, .cb .projects-cb{ grid-template-columns:1fr; }
+}
+</style>
+<style id="forza-v5">
+/* ===== v5: RFS final direction (inline-dot rows + heavy black dots + rounded-square number badge) ===== */
+.rfs-final{ margin-top:8px; }
+.rfs-final .rfs-row{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  column-gap:20px;
+  align-items:start;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+.rfs-final .rfs-row:first-child{ border-top:1px solid var(--line); }
+.rfs-final .rfs-row .num{
+  display:inline-grid;
+  place-items:center;
+  width:36px;
+  height:36px;
+  border:1px solid #d8cdb6;
+  border-radius:8px;
+  background:#fbf7f1;
+  font-family:Inter,sans-serif;
+  font-variant-numeric:tabular-nums;
+  font-size:13px;
+  font-weight:500;
+  color:#9a9285;
+  letter-spacing:.04em;
+  margin-top:1px;
+}
+.rfs-final .rfs-row .body{
+  font-size:16px;
+  line-height:1.55;
+  color:var(--text);
+}
+.rfs-final .rfs-row .body .name{
+  font-weight:700;
+  color:var(--text);
+  margin-right:10px;
+}
+.rfs-final .rfs-row .body .frag{ color:var(--muted); font-size:16px; line-height:1.55; font-weight:400; margin:0; display:inline; }
+.rfs-final .rfs-row .body .frag.lead{ color:var(--muted); font-size:16px; line-height:1.55; font-weight:400; margin:0; display:inline; }
+/* heavy black dot separator between fragments */
+.rfs-final .rfs-row .body .bigdot{
+  display:inline-block;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#171512;
+  margin:0 12px 2.5px;
+  vertical-align:middle;
+}
+
+/* ===== v5: EIR variant scaffolding ===== */
+.eir-variant{
+  margin:36px 0 8px;
+  border-top:1px dashed var(--line);
+  padding-top:22px;
+}
+.eir-variant > .v4-tag{ margin-top:0; }
+
+/* Layout A — full-width intro, then 3 columns */
+.eir-a .grid-3{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:28px 40px;
+  margin-top:8px;
+}
+.eir-a .col h3{ margin-top:0; }
+
+/* Layout B — full-width intro, then newspaper 2-col with the left side as numbered rows */
+.eir-b .grid-2{
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:28px 56px;
+  margin-top:8px;
+}
+.eir-b .num-rows{
+  list-style:none;
+  margin:0;
+  padding:0;
+  border-top:1px solid var(--line);
+}
+.eir-b .num-rows li{
+  display:grid;
+  grid-template-columns:46px 1fr;
+  column-gap:18px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+  align-items:start;
+  font-size:16px;
+  line-height:1.5;
+  color:var(--text);
+}
+.eir-b .num-rows li .num{
+  display:inline-grid;
+  place-items:center;
+  width:36px;
+  height:36px;
+  border:1px solid #d8cdb6;
+  border-radius:8px;
+  background:#fbf7f1;
+  font-variant-numeric:tabular-nums;
+  font-size:13px;
+  font-weight:500;
+  color:#9a9285;
+  margin-top:1px;
+}
+
+/* Layout C — compact full-width list with horizontal separators and number badges (RFS rhythm) */
+.eir-c .compact-rows{
+  margin-top:8px;
+  border-top:1px solid var(--line);
+}
+.eir-c .compact-rows .row{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  column-gap:20px;
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+  align-items:start;
+}
+.eir-c .compact-rows .row .num{
+  display:inline-grid;
+  place-items:center;
+  width:36px;
+  height:36px;
+  border:1px solid #d8cdb6;
+  border-radius:8px;
+  background:#fbf7f1;
+  font-variant-numeric:tabular-nums;
+  font-size:13px;
+  font-weight:500;
+  color:#9a9285;
+}
+.eir-c .compact-rows .row .body{
+  font-size:16px;
+  line-height:1.55;
+  color:var(--text);
+}
+.eir-c .compact-rows .row .body .label{
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#9a9285;
+  display:block;
+  margin-bottom:2px;
+}
+
+.eir-variant .full-intro{
+  font-size:19px;
+  line-height:1.45;
+  color:var(--text);
+  max-width:none;
+  margin:0 0 18px;
+}
+
+@media (max-width:980px){
+  .rfs-final .rfs-row{ grid-template-columns:38px 1fr; column-gap:12px; }
+  .rfs-final .rfs-row .num{ width:30px; height:30px; font-size:12px; }
+  .eir-a .grid-3, .eir-b .grid-2{ grid-template-columns:1fr; gap:18px; }
+  .eir-c .compact-rows .row{ grid-template-columns:36px 1fr; column-gap:12px; }
+}
+</style>
+
+<style id="forza-v6">
+/* ===== v6: shared baseline for all EIR concepts ===== */
+.eir-v6{
+  margin:24px 0 0;
+  padding-top:24px;
+  border-top:1px dashed var(--line);
+}
+.eir-v6 .v6-tag{
+  display:inline-block;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:4px 12px;
+  margin:0 0 18px;
+}
+.eir-v6 .v6-intro{
+  font-size:19px;
+  line-height:1.5;
+  color:var(--text);
+  max-width:none;
+  margin:0 0 28px;
+}
+.eir-v6 .contact-line{
+  margin:24px 0 0;
+  font-size:16px;
+  line-height:1.55;
+  color:var(--text);
+}
+
+/* ===== Concept 1 — Investment Memo ===== */
+.eir-c1 .memo-meta{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:24px;
+  border-top:1px solid var(--text);
+  border-bottom:1px solid var(--line);
+  padding:10px 0 12px;
+  margin-bottom:0;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.eir-c1 .memo-meta .lhs{ font-weight:600; color:var(--text); }
+.eir-c1 .memo-rows{
+  margin:0 0 28px;
+  border-bottom:1px solid var(--text);
+}
+.eir-c1 .memo-row{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  column-gap:36px;
+  align-items:start;
+  padding:30px 0 32px;
+  border-bottom:1px solid var(--line);
+}
+.eir-c1 .memo-row:last-child{ border-bottom:none; }
+.eir-c1 .memo-row .nm{
+  font-family:Anton,sans-serif;
+  font-weight:400;
+  font-size:84px;
+  line-height:.85;
+  letter-spacing:-.01em;
+  color:var(--text);
+  font-variant-numeric:tabular-nums;
+}
+.eir-c1 .memo-row .body .lede{
+  font-family:Inter,sans-serif;
+  font-weight:600;
+  font-size:24px;
+  line-height:1.18;
+  letter-spacing:-.01em;
+  color:var(--text);
+  margin:0 0 10px;
+}
+.eir-c1 .memo-row .body .copy{
+  font-size:18px;
+  line-height:1.5;
+  color:var(--text);
+  margin:0;
+  max-width:60ch;
+}
+.eir-c1 .memo-row .body .copy strong{ color:var(--text); font-weight:700; }
+.eir-c1 .memo-side{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 56px;
+  border-top:1px solid var(--line);
+  padding-top:22px;
+}
+.eir-c1 .memo-side .panel-col + .panel-col{
+  border-left:1px solid var(--line);
+  padding-left:36px;
+}
+.eir-c1 .memo-side .label{
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 14px;
+}
+.eir-c1 .memo-side ol{
+  list-style:none;
+  margin:0;
+  padding:0;
+  counter-reset:memside;
+}
+.eir-c1 .memo-side ol li{
+  counter-increment:memside;
+  position:relative;
+  padding:10px 0 10px 36px;
+  font-size:15.5px;
+  line-height:1.55;
+  color:var(--text);
+  border-bottom:1px solid var(--line);
+}
+.eir-c1 .memo-side ol li:last-child{ border-bottom:none; }
+.eir-c1 .memo-side ol li::before{
+  content:counter(memside, decimal-leading-zero);
+  position:absolute;
+  left:0;
+  top:11px;
+  font-family:Inter,sans-serif;
+  font-variant-numeric:tabular-nums;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.08em;
+  color:#9a9285;
+}
+.eir-c1 .memo-side ol li strong{ color:var(--text); font-weight:600; }
+
+/* ===== Concept 2 — Dossier ===== */
+.eir-c2 .dossier-grid{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:0 64px;
+  border-top:1px solid var(--text);
+  padding-top:32px;
+}
+.eir-c2 .dossier-left{
+  border-right:1px solid var(--line);
+  padding-right:48px;
+}
+.eir-c2 .dossier-left .file-meta{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:24px;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 22px;
+}
+.eir-c2 .dossier-left .file-meta strong{ color:var(--text); font-weight:600; }
+.eir-c2 .role-block + .role-block{
+  margin-top:30px;
+  padding-top:30px;
+  border-top:1px solid var(--line);
+}
+.eir-c2 .role-block .role-eyebrow{
+  display:inline-flex;
+  align-items:baseline;
+  gap:14px;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#9a9285;
+  margin:0 0 12px;
+}
+.eir-c2 .role-block .role-eyebrow .num{
+  font-family:Anton,sans-serif;
+  font-size:18px;
+  font-weight:400;
+  letter-spacing:0;
+  color:var(--text);
+  letter-spacing:.02em;
+}
+.eir-c2 .role-block h3.role-title{
+  font-family:Anton,sans-serif;
+  font-weight:400;
+  font-size:42px;
+  line-height:1.02;
+  letter-spacing:-.005em;
+  text-transform:uppercase;
+  color:var(--text);
+  margin:0 0 12px;
+  max-width:18ch;
+}
+.eir-c2 .role-block p.role-copy{
+  font-size:16px;
+  line-height:1.55;
+  color:var(--muted);
+  margin:0;
+  max-width:50ch;
+}
+.eir-c2 .role-block p.role-copy strong{ color:var(--text); font-weight:600; }
+.eir-c2 .dossier-right .label-bar{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:16px;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--text);
+  border-bottom:1px solid var(--text);
+  padding-bottom:10px;
+  margin-bottom:0;
+}
+.eir-c2 .dossier-right .label-bar .count{ color:#9a9285; font-weight:500; }
+.eir-c2 .dossier-right ol.traits{
+  list-style:none;
+  margin:0 0 28px;
+  padding:0;
+  counter-reset:trait;
+}
+.eir-c2 .dossier-right ol.traits li{
+  counter-increment:trait;
+  position:relative;
+  padding:14px 0 14px 42px;
+  border-bottom:1px solid var(--line);
+  font-size:15.5px;
+  line-height:1.5;
+  color:var(--text);
+}
+.eir-c2 .dossier-right ol.traits li::before{
+  content:counter(trait, decimal-leading-zero);
+  position:absolute;
+  left:0;
+  top:15px;
+  font-family:Inter,sans-serif;
+  font-variant-numeric:tabular-nums;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.08em;
+  color:#9a9285;
+}
+.eir-c2 .dossier-right ol.traits li strong{ color:var(--text); font-weight:600; }
+.eir-c2 .dossier-right .upside{
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid var(--text);
+}
+.eir-c2 .dossier-right .upside ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.eir-c2 .dossier-right .upside ul li{
+  position:relative;
+  padding:8px 0 8px 22px;
+  font-size:15.5px;
+  line-height:1.55;
+  color:var(--text);
+}
+.eir-c2 .dossier-right .upside ul li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:1.05em;
+  width:10px;
+  height:1px;
+  background:#171512;
+}
+.eir-c2 .dossier-right .upside ul li strong{ color:var(--text); font-weight:600; }
+.eir-c2 .dossier-right .upside ul li + li{ border-top:1px dotted var(--line); }
+
+/* ===== Concept 3 — Operating Bands ===== */
+.eir-c3 .band{
+  display:grid;
+  grid-template-columns:170px 1fr;
+  column-gap:32px;
+  align-items:start;
+  padding:28px 0 30px;
+  border-top:1px solid var(--line);
+}
+.eir-c3 .band:first-of-type{ border-top:1px solid var(--text); }
+.eir-c3 .band:last-of-type{ border-bottom:1px solid var(--text); }
+.eir-c3 .band .band-meta{
+  position:sticky;
+  top:0;
+}
+.eir-c3 .band .band-meta .step{
+  font-family:Anton,sans-serif;
+  font-size:48px;
+  line-height:.9;
+  color:var(--text);
+  letter-spacing:.01em;
+}
+.eir-c3 .band .band-meta .step .slash{ color:#cdc4b1; }
+.eir-c3 .band .band-meta .lbl{
+  display:block;
+  margin-top:6px;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.eir-c3 .band .band-meta .sublbl{
+  display:block;
+  margin-top:4px;
+  font-family:Inter,sans-serif;
+  font-size:12px;
+  letter-spacing:.04em;
+  color:#9a9285;
+}
+
+/* Band 1 — DOES: two big rows */
+.eir-c3 .band-does .does-rows{ display:flex; flex-direction:column; }
+.eir-c3 .band-does .does-row{
+  display:grid;
+  grid-template-columns:64px 1fr;
+  column-gap:22px;
+  align-items:baseline;
+  padding:6px 0 18px;
+}
+.eir-c3 .band-does .does-row + .does-row{
+  margin-top:6px;
+  padding-top:18px;
+  border-top:1px dotted var(--line);
+}
+.eir-c3 .band-does .does-row .nm{
+  font-family:Anton,sans-serif;
+  font-size:54px;
+  line-height:.9;
+  color:var(--text);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:0;
+}
+.eir-c3 .band-does .does-row .body .lede{
+  font-family:Inter,sans-serif;
+  font-weight:600;
+  font-size:20px;
+  line-height:1.22;
+  color:var(--text);
+  margin:0 0 6px;
+}
+.eir-c3 .band-does .does-row .body .copy{
+  font-size:17px;
+  line-height:1.5;
+  color:var(--text);
+  margin:0;
+  max-width:62ch;
+}
+.eir-c3 .band-does .does-row .body .copy strong{ color:var(--text); font-weight:700; }
+
+/* Band 2 — SETS APART: compact numbered chips list */
+.eir-c3 .band-apart ol.chips{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px 32px;
+  counter-reset:chip;
+}
+.eir-c3 .band-apart ol.chips li{
+  counter-increment:chip;
+  position:relative;
+  padding:10px 0 10px 38px;
+  border-bottom:1px solid var(--line);
+  font-size:15px;
+  line-height:1.5;
+  color:var(--text);
+}
+.eir-c3 .band-apart ol.chips li::before{
+  content:counter(chip, decimal-leading-zero);
+  position:absolute;
+  left:0;
+  top:11px;
+  font-family:Inter,sans-serif;
+  font-variant-numeric:tabular-nums;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.08em;
+  color:#9a9285;
+}
+.eir-c3 .band-apart ol.chips li strong{ color:var(--text); font-weight:600; }
+.eir-c3 .band-apart ol.chips li:nth-last-child(2),
+.eir-c3 .band-apart ol.chips li:last-child{ border-bottom:none; }
+
+/* Band 3 — WORTH IT: 3-col horizontal mini-rows */
+.eir-c3 .band-worth .worth-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:0 32px;
+}
+.eir-c3 .band-worth .worth-cell{
+  position:relative;
+  padding:0 0 0 0;
+}
+.eir-c3 .band-worth .worth-cell + .worth-cell{
+  padding-left:32px;
+  border-left:1px solid var(--line);
+  margin-left:-1px;
+}
+.eir-c3 .band-worth .worth-cell .num{
+  font-family:Anton,sans-serif;
+  font-size:30px;
+  line-height:1;
+  color:var(--text);
+  margin:0 0 8px;
+  font-variant-numeric:tabular-nums;
+}
+.eir-c3 .band-worth .worth-cell .lede{
+  font-family:Inter,sans-serif;
+  font-weight:600;
+  font-size:17px;
+  line-height:1.25;
+  color:var(--text);
+  margin:0 0 6px;
+}
+.eir-c3 .band-worth .worth-cell .copy{
+  font-size:15.5px;
+  line-height:1.5;
+  color:var(--text);
+  margin:0;
+}
+.eir-c3 .band-worth .worth-cell .copy strong{ color:var(--text); font-weight:700; }
+
+/* ===== v6: RFS body normalization for two phrases ===== */
+/* Plain Inter body — strip eyebrow/special look on .updated */
+#rfs .updated{
+  display:block;
+  font-family:Inter,sans-serif;
+  font-size:16px;
+  font-weight:400;
+  font-style:normal;
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--text);
+  margin-top:10px;
+}
+#rfs .updated .dot{ display:none; }
+/* Plain Inter body for the closing footnote */
+#rfs .invest-line{
+  font-family:Inter,sans-serif;
+  font-size:16px;
+  font-weight:400;
+  font-style:normal;
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--text);
+  margin-top:18px;
+}
+
+/* Mobile fallbacks */
+@media (max-width:980px){
+  .eir-c1 .memo-row{ grid-template-columns:1fr; row-gap:8px; }
+  .eir-c1 .memo-row .nm{ font-size:56px; }
+  .eir-c1 .memo-side{ grid-template-columns:1fr; }
+  .eir-c1 .memo-side .panel-col + .panel-col{ border-left:0; padding-left:0; margin-top:18px; padding-top:18px; border-top:1px solid var(--line); }
+  .eir-c2 .dossier-grid{ grid-template-columns:1fr; gap:24px; }
+  .eir-c2 .dossier-left{ border-right:0; padding-right:0; padding-bottom:18px; border-bottom:1px solid var(--line); }
+  .eir-c2 .role-block h3.role-title{ font-size:30px; }
+  .eir-c3 .band{ grid-template-columns:1fr; row-gap:10px; }
+  .eir-c3 .band-apart ol.chips{ grid-template-columns:1fr; }
+  .eir-c3 .band-worth .worth-grid{ grid-template-columns:1fr; }
+  .eir-c3 .band-worth .worth-cell + .worth-cell{ border-left:0; padding-left:0; margin-left:0; padding-top:14px; margin-top:14px; border-top:1px solid var(--line); }
+}
+
+/* EIR section */
+.eir-combined{
+  margin:24px 0 0;
+  padding-top:24px;
+  border-top:1px dashed var(--line);
+}
+.eir-combined .combined-tag{
+  display:inline-block;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:4px 12px;
+  margin:0 0 18px;
+}
+.eir-combined .combined-meta{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:24px;
+  border-top:1px solid var(--text);
+  border-bottom:1px solid var(--line);
+  padding:10px 0 12px;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.eir-combined .combined-meta .lhs{ font-weight:600; color:var(--text); }
+
+/* Top: two big Anton task accents — borrowed from Concept 2 .role-block */
+.eir-combined .combined-top{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 64px;
+  padding:36px 0 36px;
+  border-bottom:1px solid var(--text);
+}
+.eir-combined .combined-top .role-block{
+  padding-right:8px;
+}
+.eir-combined .combined-top .role-block + .role-block{
+  border-left:1px solid var(--line);
+  padding-left:64px;
+}
+.eir-combined .role-block .role-eyebrow{
+  display:inline-flex;
+  align-items:baseline;
+  gap:14px;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#9a9285;
+  margin:0 0 14px;
+}
+.eir-combined .role-block .role-eyebrow .num{
+  font-family:Anton,sans-serif;
+  font-size:18px;
+  font-weight:400;
+  color:var(--text);
+  letter-spacing:.02em;
+}
+.eir-combined .role-block h3.role-title{
+  font-family:Anton,sans-serif;
+  font-weight:400;
+  font-size:clamp(48px, 5.2vw, 72px);
+  line-height:1.0;
+  letter-spacing:-.005em;
+  text-transform:uppercase;
+  color:var(--text);
+  margin:0 0 16px;
+  max-width:14ch;
+}
+.eir-combined .role-block p.role-copy{
+  font-size:17px;
+  line-height:1.55;
+  color:var(--muted);
+  margin:0;
+  max-width:52ch;
+}
+.eir-combined .role-block p.role-copy strong{ color:var(--text); font-weight:600; }
+
+/* Bottom: balanced editorial 5/3 split */
+.eir-combined .combined-bottom{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:0 64px;
+  padding:36px 0 8px;
+}
+.eir-combined .combined-bottom .bot-col + .bot-col{
+  border-left:1px solid var(--line);
+  padding-left:64px;
+}
+.eir-combined .bot-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:16px;
+  font-family:Inter,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--text);
+  border-bottom:1px solid var(--text);
+  padding-bottom:10px;
+  margin-bottom:0;
+}
+.eir-combined .bot-head .bot-count{ color:#9a9285; font-weight:500; }
+.eir-combined .bot-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  counter-reset:botctr;
+}
+.eir-combined .bot-list li{
+  counter-increment:botctr;
+  position:relative;
+  padding:14px 0 14px 42px;
+  border-bottom:1px solid var(--line);
+  font-size:15.5px;
+  line-height:1.55;
+  color:var(--text);
+}
+.eir-combined .bot-list li:last-child{ border-bottom:none; }
+.eir-combined .bot-list li::before{
+  content:counter(botctr, decimal-leading-zero);
+  position:absolute;
+  left:0;
+  top:15px;
+  font-family:Inter,sans-serif;
+  font-variant-numeric:tabular-nums;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.08em;
+  color:#9a9285;
+}
+.eir-combined .bot-list li strong{ color:var(--text); font-weight:600; }
+/* matched vertical rhythm: traits has 5 items, worth has 3 -- give worth a bit more breathing room */
+.eir-combined .bot-list-worth li{ padding-top:18px; padding-bottom:18px; }
+.eir-combined .contact-line{
+  margin:24px 0 0;
+  font-size:16px;
+  line-height:1.55;
+  color:var(--text);
+}
+
+/* Hide any leftover blocks of old EIR concepts (defensive) */
+#eir-concept-1, #eir-concept-2, #eir-concept-3 { display:none !important; }
+
+/* RFS refresh icon next to the "updated frequently" line */
+#rfs .updated{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+#rfs .updated .refresh-ico{
+  width:14px;
+  height:14px;
+  flex:0 0 auto;
+  color:#171512;
+  vertical-align:middle;
+  position:relative;
+  top:0;
+}
+#rfs .updated .updated-text{
+  font-family:Inter,sans-serif;
+  font-size:16px;
+  font-weight:400;
+  color:var(--text);
+  line-height:1.55;
+}
+
+@media (max-width:980px){
+  .eir-combined .combined-top{ grid-template-columns:1fr; row-gap:24px; padding:24px 0; }
+  .eir-combined .combined-top .role-block + .role-block{ border-left:0; padding-left:0; padding-top:24px; border-top:1px solid var(--line); }
+  .eir-combined .role-block h3.role-title{ font-size:36px; }
+  .eir-combined .combined-bottom{ grid-template-columns:1fr; row-gap:24px; padding:24px 0 0; }
+  .eir-combined .combined-bottom .bot-col + .bot-col{ border-left:0; padding-left:0; padding-top:24px; border-top:1px solid var(--line); }
+  .eir-combined .combined-meta{ flex-wrap:wrap; gap:8px 16px; }
+}
+
+/* EIR refinements */
+.eir-combined .combined-tag,
+.eir-combined .combined-meta,
+.eir-combined .bot-count,
+#eir > .footnote { display:none !important; }
+
+/* Top role accents: keep tiny "01 / 02 What an EIR does" labels but drop the "Role · " prefix; keep big Anton headlines */
+.eir-combined .combined-top{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 64px;
+  padding:24px 0 36px;
+  border-top:none;
+  border-bottom:1px solid var(--text);
+}
+
+/* Lower half: strict 50/50 columns, no source/lead bias */
+.eir-combined .combined-bottom{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 64px;
+  padding:36px 0 8px;
+  align-items:start;
+}
+.eir-combined .combined-bottom .bot-col{
+  min-width:0;
+}
+.eir-combined .combined-bottom .bot-col + .bot-col{
+  border-left:1px solid var(--line);
+  padding-left:64px;
+}
+
+/* Source headings (.bot-label) — larger / more prominent */
+.eir-combined .bot-head{
+  display:block;
+  font-family:Anton,sans-serif;
+  font-weight:400;
+  letter-spacing:-.005em;
+  text-transform:uppercase;
+  color:var(--text);
+  border-bottom:1px solid var(--text);
+  padding-bottom:14px;
+  margin-bottom:0;
+}
+.eir-combined .bot-head .bot-label{
+  font-family:Anton,sans-serif;
+  font-weight:400;
+  letter-spacing:-.005em;
+  text-transform:uppercase;
+  color:var(--text);
+  font-size:clamp(28px, 2.6vw, 38px);
+  line-height:1.05;
+  display:block;
+}
+
+/* Left column (traits): smaller text, tighter rhythm */
+.eir-combined .bot-traits .bot-list li{
+  font-size:14.5px;
+  line-height:1.5;
+  padding:10px 0 10px 38px;
+}
+.eir-combined .bot-traits .bot-list li::before{
+  top:11px;
+  font-size:11px;
+}
+.eir-combined .bot-traits .bot-head .bot-label{
+  font-size:clamp(24px, 2.2vw, 32px);
+}
+
+/* Right column (worth): larger text, more generous gaps */
+.eir-combined .bot-worth .bot-list li,
+.eir-combined .bot-worth .bot-list-worth li{
+  font-size:18px;
+  line-height:1.6;
+  padding:22px 0 22px 46px;
+}
+.eir-combined .bot-worth .bot-list li::before,
+.eir-combined .bot-worth .bot-list-worth li::before{
+  top:24px;
+  font-size:12px;
+}
+.eir-combined .bot-worth .bot-head .bot-label{
+  font-size:clamp(32px, 3.0vw, 44px);
+}
+
+/* Larger CTA */
+.eir-combined .bot-worth .contact-line{
+  margin-top:32px;
+  font-size:22px;
+  line-height:1.4;
+  color:var(--text);
+  font-weight:500;
+}
+
+/* Tiny "01" / "02 what an EIR does" labels on top blocks */
+.eir-combined .combined-top .role-eyebrow{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:lowercase;
+  color:#9a9285;
+}
+.eir-combined .combined-top .role-eyebrow .num{
+  text-transform:none;
+  font-family:Anton,sans-serif;
+  font-size:18px;
+  color:var(--text);
+}
+
+@media (max-width:980px){
+  .eir-combined .combined-bottom{
+    grid-template-columns:1fr;
+    row-gap:24px;
+    padding:24px 0 0;
+  }
+  .eir-combined .combined-bottom .bot-col + .bot-col{
+    border-left:0;
+    padding-left:0;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+  }
+  .eir-combined .bot-worth .contact-line{ font-size:18px; }
+}
+
+</style>
+</head><body><section class="hero"><div class="brand"><svg aria-label="Forza Capital" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none">
   <circle cx="24" cy="24" r="16" stroke="#ffffff" stroke-width="3"/>
   <path d="M17 16h15" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
   <path d="M17 24h11" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
   <path d="M18 30.8h2.6" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
   <text x="56" y="31" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#ffffff">Forza Capital</text>
-</svg></div><div class="tag"><div>SMARTER.</div><div>FASTER.</div><div>FORZA.</div></div></section><section class="section"><p class="lead">Forza Capital family office invests in the following areas:</p><div class="one"><div class="item"><div class="topline"><div class="badge">01</div><div class="txt">AI &amp; biotech VC funds as LP.</div></div></div><div class="item"><div class="topline"><div class="badge">02</div><div class="txt">Radical longevity</div></div><div class="sub"><div>– Partial cellular reprogramming with a realistic path to in vivo therapies.</div><div>– Organ-on-a-chip systems.</div><div>– In vivo delivery platforms for epigenetic or gene-editing longevity therapies.</div><div>– Blood and plasma-derived therapies with rigorous clinical endpoints beyond “feeling better”.</div><div>– Organ-scale replacement technologies that can integrate into existing surgical workflows.</div></div></div><div class="item"><div class="topline"><div class="badge">03</div><div class="txt">Constrained-supply real estate.</div></div></div><div class="item"><div class="topline"><div class="badge">04</div><div class="txt">Asset-backed lending with transparent collateral coverage.</div></div></div><div class="item"><div class="topline"><div class="badge">05</div><div class="txt">Special situations in private markets (restructurings, secondary stakes, liquidity for founders).</div></div></div><div class="item"><div class="topline"><div class="badge">06</div><div class="txt">Opportunistic public markets in our focus areas.</div></div></div></div><footer class="footer"><img alt="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='340' height='28' viewBox='0 0 340 28'><text x='0' y='20' font-family='Arial, sans-serif' font-size='22' fill='%23171512'>ask@forza.capital</text></svg>"></footer></section></body></html>
+</svg></div><nav class="topnav" aria-label="Primary"><a href="#eir"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7.5" width="17" height="12" rx="1.6"/><path d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5"/><path d="M3.5 12.5h17"/></svg>Looking for EIRs</a><a href="#rfs"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l3 6 6 .8-4.5 4 1.2 6.2L12 17l-5.7 3 1.2-6.2L3 9.8 9 9z"/></svg>Request for Startups</a></nav>
+<div class="tag"><div>SMARTER.</div><div>FASTER.</div><div>FORZA.</div></div></section><section class="section"><p class="lead">Forza Capital family office invests in the following areas:</p><div class="one"><div class="item"><div class="topline"><div class="badge">01</div><div class="txt">AI &amp; biotech VC funds as LP.</div></div></div><div class="item"><div class="topline"><div class="badge">02</div><div class="txt">Radical longevity</div></div><div class="sub"><div>– Partial cellular reprogramming with a realistic path to in vivo therapies.</div><div>– Organ-on-a-chip systems.</div><div>– In vivo delivery platforms for epigenetic or gene-editing longevity therapies.</div><div>– Blood and plasma-derived therapies with rigorous clinical endpoints beyond “feeling better”.</div><div>– Organ-scale replacement technologies that can integrate into existing surgical workflows.</div></div></div><div class="item"><div class="topline"><div class="badge">03</div><div class="txt">Constrained-supply real estate.</div></div></div><div class="item"><div class="topline"><div class="badge">04</div><div class="txt">Asset-backed lending with transparent collateral coverage.</div></div></div><div class="item"><div class="topline"><div class="badge">05</div><div class="txt">Special situations in private markets (restructurings, secondary stakes, liquidity for founders).</div></div></div><div class="item"><div class="topline"><div class="badge">06</div><div class="txt">Opportunistic public markets in our focus areas.</div></div></div></div><footer class="footer"><img alt="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='340' height='28' viewBox='0 0 340 28'><text x='0' y='20' font-family='Arial, sans-serif' font-size='22' fill='%23171512'>ask@forza.capital</text></svg>"></footer></section><section id="eir" class="panel"><div class="panel-head"><div>
+<div class="eyebrow">Forza.Capital · EIR</div>
+<h2>We&rsquo;re looking for EIRs</h2>
+</div></div>
+<p class="intro full-intro" style="max-width:none"><strong>Venture funds expect an EIR, as an entrepreneur, to launch a project the fund will finance within 3&ndash;9 months.</strong> Often, the idea is unknown at the start, and the EIR spends a lot of time researching the market and testing hypotheses. An EIR is never a beginner &mdash; they have repeatedly won in venture-backed businesses, not in corporate roles.</p>
+<!-- ============================================================
+     EIR section
+     ============================================================ -->
+<div class="eir-combined" id="eir-combined">
+  <div class="combined-top">
+    <div class="role-block">
+      <p class="role-eyebrow"><span class="num">01</span><span>What an EIR does</span></p>
+      <h3 class="role-title">Launches new projects.</h3>
+      <p class="role-copy">As an experienced founder, <strong>launches new projects</strong>.</p>
+    </div>
+    <div class="role-block">
+      <p class="role-eyebrow"><span class="num">02</span><span>What an EIR does</span></p>
+      <h3 class="role-title">Brings strong deal flow.</h3>
+      <p class="role-copy"><strong>Brings strong deal flow</strong>: through their personal network, the EIR pulls in deals that wouldn&rsquo;t reach the standard channels.</p>
+    </div>
+  </div>
+
+  <div class="combined-bottom">
+    <div class="bot-col bot-traits">
+      <div class="bot-head"><span class="bot-label">What sets a strong EIR apart</span></div>
+      <ol class="bot-list">
+        <li><strong>A self-guided missile</strong>: receives a problem and brings back a solution, not 8 excuses.</li>
+        <li><strong>Power of persuasion</strong>: convinces a co-founder to leave corporate world, a customer to buy something that exists only as a prototype, and an investor to write a check.</li>
+        <li>Despite his experience, still does a lot of <strong>hands-on work</strong>: dives into details, micromanages aggressively at the start.</li>
+        <li><strong>A fast-iteration machine</strong>: tests hypotheses quickly, comes up with 5 new ones even faster after the failed ones.</li>
+        <li><strong>Strong track record of success</strong>: a variety of achievements in early-stage startup projects.</li>
+      </ol>
+    </div>
+    <div class="bot-col bot-worth">
+      <div class="bot-head"><span class="bot-label">Why an EIR role is worth it</span></div>
+      <ol class="bot-list bot-list-worth">
+        <li><strong>Sign your first investor</strong> for your future startup.</li>
+        <li><strong>Get a feel for the market</strong>: a lot has changed in other industries while you ran your last project. Funds see a wide cross-section. See the latest trends.</li>
+        <li><strong>Spend 6&ndash;9 months experimenting</strong> with different startup ideas while hunting for a unicorn.</li>
+      </ol>
+      <p class="contact-line">If this sounds interesting, contact us.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</section><section id="rfs" class="panel"><div class="panel-head"><div><div class="eyebrow">Forza.Capital &middot; RFS</div><h2>Request for Startups from Forza.Capital</h2><div class="updated"><span class="dot"></span><svg class="refresh-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8 8 0 0 0-13.6-4.7L4 9"/><polyline points="4 4 4 9 9 9"/><path d="M4 12.5a8 8 0 0 0 13.6 4.7L20 15"/><polyline points="20 20 20 15 15 15"/></svg><span class="updated-text">The list of projects is updated frequently.</span></div></div></div><p class="intro">Funds see the wide picture &mdash; a view of the entire market &mdash; while founders see deep but narrow. Usually they don&rsquo;t step beyond a single vertical: the one they studied or worked in at their previous job. As a result, potentially strong founders walk past huge markets and build services for 100 users, losing years of their lives.</p><div class="three-cols"><div class="col"><h3>RFS helps founders</h3><ul><li>improve their odds of building a truly large business;</li><li>secure financing (no need to write to 200 funds if there are 2 strongly interested ones);</li><li>get strong feedback (such a fund has deep expertise in this specific area, and it&rsquo;s probably worth listening).</li></ul></div><div class="col"><h3>The fund is interested in</h3><ul><li>receiving 50 targeted pitches instead of 500 random ones;</li><li>talking to strong &ldquo;builders&rdquo; rather than professional &ldquo;pitchers&rdquo; with polished slides;</li><li>not buying a &ldquo;lottery ticket&rdquo; or &ldquo;index of the entire market,&rdquo; but focusing on target verticals.</li></ul></div></div><p class="invest-line">Forza is highly likely to invest in these projects, provided the team and execution plan are strong.</p>
+<div class="rfs-final" role="list">
+<div class="rfs-row" role="listitem"><div class="num">01</div><div class="body"><span class="name">Home bloodwork OS.</span><span class="frag lead">Subscription + logistics + interpretation of test results + automated correction protocols (iron, B12, inflammation, lipids) under physician supervision.</span><span class="bigdot"></span><span class="frag">Unclear how to maintain high margin with (a) home visits (especially if patients have to wait 2 hours for IV drips), (b) operating under someone else&rsquo;s license.</span><span class="bigdot"></span><span class="frag">California at the start.</span></div></div>
+<div class="rfs-row" role="listitem"><div class="num">02</div><div class="body"><span class="name">Early cancer detection.</span><span class="frag lead">Subscription business model. A service that combines multi-cancer screening (blood/tests/imaging), reminders, and navigation through diagnostics.</span><span class="bigdot"></span><span class="frag">Unclear how to solve the false-positive problem &mdash; a service that produces 10 false positives per nurse visit and scares patients to death is not viable.</span><span class="bigdot"></span><span class="frag">Quite possibly, the problem cannot be solved without technology breakthroughs.</span><span class="bigdot"></span><span class="frag">California at the start.</span></div></div>
+<div class="rfs-row" role="listitem"><div class="num">03</div><div class="body"><span class="name">Hormone optimization platform.</span><span class="frag lead">A transparent, medically valid platform for hormonal health (men/women) where the result is measured by objective markers. Evidence-based medicine, no charlatanism.</span><span class="bigdot"></span><span class="frag">The challenge: how to keep high margin while operating under a lead-generation model (without a license)?</span><span class="bigdot"></span><span class="frag">We assume the service will start &ldquo;giving advice,&rdquo; which requires obtaining a license (how would you get it fast/cheaply?).</span><span class="bigdot"></span><span class="frag">California at the start.</span></div></div>
+<div class="rfs-row" role="listitem"><div class="num">04</div><div class="body"><span class="name">Geo-arbitrage in expensive medical procedures.</span><span class="frag lead">The difficulty isn&rsquo;t in the products &mdash; there are dozens of procedures where the price gap between the US and Europe/Mexico is $30K+.</span><span class="bigdot"></span><span class="frag">The hard part is finding enough customers willing to pay: people who are not rich enough to ignore the price difference, but rich enough to pay without insurance.</span><span class="bigdot"></span><span class="frag">The second problem &mdash; advertising restrictions.</span><span class="bigdot"></span><span class="frag">US only.</span></div></div>
+<div class="rfs-row" role="listitem"><div class="num">05</div><div class="body"><span class="name">AI talent scout (next-gen recruiting).</span><span class="frag lead">Not &ldquo;resume matching,&rdquo; but an agent that searches for people everywhere, evaluates real skills, writes to them, runs the conversation, and closes the hire.</span><span class="bigdot"></span><span class="frag">There are already many alternatives &mdash; what makes this one better?</span><span class="bigdot"></span><span class="frag">The task is hard, but we&rsquo;re fighting for a high check (one annual salary of the candidate, ~$80K per client).</span><span class="bigdot"></span><span class="frag">US only.</span></div></div>
+<div class="rfs-row" role="listitem"><div class="num">06</div><div class="body"><span class="name">Digital copy of a person.</span><span class="frag lead">Not just preserving information (correspondence, video, interviews, transcripts of every conversation).</span><span class="bigdot"></span><span class="frag">Not just chat/video you can talk to.</span><span class="bigdot"></span><span class="frag">The next level.</span></div></div>
+<div class="rfs-row" role="listitem"><div class="num">07</div><div class="body"><span class="name">Family offices.</span><span class="frag lead">Solutions for UHNWI managers.</span><span class="bigdot"></span><span class="frag">The value should be measured in millions of dollars, not &ldquo;slides got prettier and faster to make.&rdquo;</span></div></div>
+</div>
+</section></body></html>
